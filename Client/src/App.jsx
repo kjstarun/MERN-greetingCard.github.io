@@ -1,5 +1,11 @@
+import LogoContainer from "./components/header/logo";
+
 function App() {
-  return <>Hi there, this site is deployed via Netlify</>;
+  return (
+    <>
+      <LogoContainer />
+    </>
+  );
 }
 
 export default App;
