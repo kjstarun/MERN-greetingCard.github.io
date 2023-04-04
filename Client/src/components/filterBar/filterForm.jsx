@@ -11,19 +11,21 @@ const FilterForm = ({ filterOptionsFlag }) => {
 
       <Form.Group className="mb-3" controlId="formBasicColor">
         <Form.Label>Color</Form.Label>
-        <div style={{ width: "250px" }}>
-          <select id="select-color" onChange="colorFilterList(value)">
-            <option value="0"></option>
-            <option value="1">Black</option>
-            <option value="2">Pink</option>
-            <option value="3">White</option>
-          </select>
-        </div>
+        <Form.Select className="color-filters">
+          <option value="select-color">Select color</option>
+          <option value="black">Black</option>
+          <option value="pink">Pink</option>
+          <option value="white">White</option>
+        </Form.Select>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicTimeframe">
         <Form.Label>Timeframe</Form.Label>
-        <Form.Control type="text" placeholder="Enter timeframe" />
+        <Form.Select className="time-filters">
+          <option value="select-timframe">Select Timeframe</option>
+          <option value="early-latest">Early to latest</option>
+          <option value="latest-early">Latest to early</option>
+        </Form.Select>
       </Form.Group>
     </Form>
   );
