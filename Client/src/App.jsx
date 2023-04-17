@@ -11,6 +11,7 @@ import LandingPage from "./pages/landingPage";
 import Birthday from "./templates/birthday/birthday";
 import Anniversary from "./templates/anniversary/anniversary";
 import Wedding from "./templates/wedding/wedding";
+import BirthdayEdit from "./templates/birthday/birthday.edit";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/view/birthday" element={<Birthday />} />
           <Route path="/view/anniversary" element={<Anniversary />} />
           <Route path="/view/wedding" element={<Wedding />} />
+          <Route path="/view/birthday/:edit" element={<BirthdayEdit />} />
         </Routes>
       </BrowserRouter>
     </Provider>

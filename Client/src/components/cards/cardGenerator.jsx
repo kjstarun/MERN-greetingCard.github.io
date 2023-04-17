@@ -5,23 +5,27 @@ import { Link } from "react-router-dom";
 
 const CardGenerator = () => {
   const dispatch = useDispatch();
-  const {cardList} = useSelector((state) => state.cardSlice);
+  const { cardList } = useSelector((state) => state.cardSlice);
 
   return (
     <div className="cards-container">
       {cardList &&
         cardList.map((item, index) => {
           return (
-            <Link
-              to={`view/${item.tag}`}
-              style={{ textDecoration: "none", color: "black" }}>
-              <div
-                className="card-parent-home"
-                key={index}
-                onClick={() => dispatch(handleView(item.id))}>
-                <Card className="image-container">
-                  <Card.Img variant="top" src={item.imageSource} alt="Image" />
-                </Card>
+            <>
+              <div className="card-parent-home" key={index}>
+                <Link
+                  to={`view/${item.tag}`}
+                  style={{ textDecoration: "none", color: "black" }}>
+                  <Card className="image-container">
+                    <Card.Img
+                      variant="top"
+                      src={item.imageSource}
+                      alt="Image"
+                      onClick={() => dispatch(handleView(item.id))}
+                    />
+                  </Card>
+                </Link>
                 <Card.Body className="card-details">
                   <span>{item.title}</span>
                   <span className="like-view-details">
@@ -49,7 +53,7 @@ const CardGenerator = () => {
                   </span>
                 </Card.Body>
               </div>
-            </Link>
+            </>
           );
         })}
     </div>

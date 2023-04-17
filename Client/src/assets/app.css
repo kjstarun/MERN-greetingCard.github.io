@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif ;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
@@ -195,4 +195,44 @@ input[type="text"]:focus {
 ::-webkit-scrollbar {
   color: transparent;
   width: 1px;
+}
+
+.edit-button {
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #ea4c89;
+  border: none;
+}
+
+.save-button {
+  position: absolute;
+  right: 10%;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #ea4c89;
+  border: none;
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background-color: #ea4c89;
+  opacity: 0.7;
+}
+/*Modal*/
+
+.modal.show .modal-dialog {
+  transform: none;
+  float: right;
+  margin-top: 0;
+}
+
+.fade {
+  transition: unset;
+}
+
+.input-group > .form-control {
+  width: 100%;
+  gap: 20px;
 }
