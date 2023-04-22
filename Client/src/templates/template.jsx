@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Birthday = () => {
+const Template = () => {
   const { edit } = useParams();
   const [card, setCard] = useState({});
   const [data, setdata] = useState({});
@@ -65,4 +65,4 @@ const Birthday = () => {
   );
 };
 
-export default Birthday;
+export default Template;

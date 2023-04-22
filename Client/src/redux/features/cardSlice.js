@@ -8,6 +8,7 @@ const initialState = {
   filterTimestamp: null,
   filterTag: null,
   filterPopular: null,
+  templateId: null,
 };
 
 const FilterData = createSlice({
@@ -69,6 +70,12 @@ const FilterData = createSlice({
       });
       console.log(state.cardList);
     },
+
+    viewTemplate: (state, action) => {
+      console.log(action.payload);
+      state.templateId = action.payload;
+      console.log("from redux templateid", state.templateId);
+    },
   },
 });
 
@@ -79,6 +86,7 @@ export const {
   setFilterTag,
   handleLike,
   handleView,
+  viewTemplate,
 } = FilterData.actions;
 
 export default FilterData.reducer;
