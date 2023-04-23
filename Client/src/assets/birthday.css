@@ -5,6 +5,7 @@
   align-items: center;
   background-color: #80808047;
   font-family: "Petit Formal Script", cursive;
+  min-width: 100%;
 }
 
 .card-parent {

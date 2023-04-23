@@ -1,14 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cardSlice from "./features/cardSlice";
-import birthdaySlice from "./features/birthdaySlice";
-import anniversarylice from "./features/anniversarylice";
-import weddingSlice from "./features/weddingSlice";
+import createSagaMiddleware from "@redux-saga/core";
+import rootSaga from "./rootSaga";
+// import createSagaMiddleware from ''
+
+
+const sagaMiddleware = createSagaMiddleware();
+
 
 export default configureStore({
   reducer: {
-    cardSlice,
-    birthdaySlice,
-    anniversarylice,
-    weddingSlice,
+    cardSlice
   },
+  middleware: (currentMiddleware) => [
+    ...currentMiddleware({ thunk: false }),
+    sagaMiddleware,
+  ],
 });
+
+sagaMiddleware.run(rootSaga);

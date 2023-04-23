@@ -30,6 +30,23 @@ export const CARDS_DATA = [
             and achievements 2017 brought our way and we're looking forward to
             what 2018 will bring.`,
     signature: "Greetings",
+    input: [
+      {
+        name: "heading",
+        type: "text",
+        placeholder: "Enter a quote / wish",
+      },
+      {
+        name: "description",
+        type: "text",
+        placeholder: "Enter description",
+      },
+      {
+        name: "signature",
+        type: "text",
+        placeholder: "Enter a signature message within 10 letters",
+      },
+    ],
   },
   {
     id: "643ec215905469606b0505eb",
@@ -65,6 +82,28 @@ export const CARDS_DATA = [
               you, sweetheart. Happy anniversary!`,
     firstName: "Sandeep",
     lastName: "Lavanya",
+    input: [
+      {
+        name: "heading",
+        type: "text",
+        placeholder: "Enter a quote / wish",
+      },
+      {
+        name: "description",
+        type: "text",
+        placeholder: "Enter description",
+      },
+      {
+        name: "firstName",
+        type: "text",
+        placeholder: "Enter Firstname",
+      },
+      {
+        name: "lastName",
+        type: "text",
+        placeholder: "Enter Lastname",
+      },
+    ],
   },
   {
     id: "643ec2a9905469606b0505ed",
@@ -110,5 +149,32 @@ export const CARDS_DATA = [
             Come and witness our vows`,
     venue: "Coimbatore",
     dateAndTime: "31st February 5pm",
+    input: [
+      {
+        name: "brideName",
+        type: "text",
+        placeholder: "Enter Bridename",
+      },
+      {
+        name: "groomName",
+        type: "text",
+        placeholder: "Enter Groomname",
+      },
+      {
+        name: "description",
+        type: "text",
+        placeholder: "Enter Description",
+      },
+      {
+        name: "venue",
+        type: "text",
+        placeholder: "Enter Venue",
+      },
+      {
+        name: "dateAndTime",
+        type: "text",
+        placeholder: "Enter Date and time in text",
+      },
+    ],
   },
 ];

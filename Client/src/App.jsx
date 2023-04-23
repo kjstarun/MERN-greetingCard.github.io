@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/view" element={<Template />} />
-          {/* <Route path="/view/birthday/:edit" element={<BirthdayEdit />} /> */}
+          <Route path="/view/:edit" element={<Template />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -9,6 +9,7 @@ const initialState = {
   filterTag: null,
   filterPopular: null,
   templateId: null,
+  templateItem: null,
 };
 
 const FilterData = createSlice({
@@ -22,7 +23,7 @@ const FilterData = createSlice({
         return;
       }
       state.cardList = state.APICardData.filter((item) =>
-        item.popularity.includes(action.payload)
+        item.cardPopularity.includes(action.payload)
       );
       console.log("After filter", state.cardList);
     },
@@ -33,7 +34,7 @@ const FilterData = createSlice({
         return;
       }
       state.cardList = state.APICardData.filter(
-        (item) => item.color === action.payload
+        (item) => item.cardColor === action.payload
       );
     },
     setFilterTimeFrame: (state, action) => {
@@ -45,7 +46,7 @@ const FilterData = createSlice({
         return;
       }
       state.cardList = state.APICardData.filter(
-        (item) => item.tag === action.payload
+        (item) => item.cardTag === action.payload
       );
     },
     handleLike: (state, action) => {
@@ -75,6 +76,27 @@ const FilterData = createSlice({
       console.log(action.payload);
       state.templateId = action.payload;
       console.log("from redux templateid", state.templateId);
+      let filterItem = state.cardList.filter((item) => {
+        console.log(item.id, state.templateId);
+        if (item.id === state.templateId) {
+          console.log(true);
+          return item;
+        }
+      });
+      state.templateItem = filterItem[0];
+      console.log("filter from redux", state.templateItem);
+    },
+
+    updateLikeAPI: (state, action) => {
+      console.log("watcher function", action);
+    },
+
+    updateLikeLocal: (state, action) => {
+      state.cardList = state.cardList.map((item) => {
+        if (item.id === action.payload) {
+          item.isLiked = !isLiked;
+        }
+      });
     },
   },
 });
@@ -87,6 +109,8 @@ export const {
   handleLike,
   handleView,
   viewTemplate,
+  updateLikeLocal,
+  updateLikeAPI,
 } = FilterData.actions;
 
 export default FilterData.reducer;

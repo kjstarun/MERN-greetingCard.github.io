@@ -43,6 +43,7 @@ export const createCard = async (req, res) => {
 };
 
 export const updateCard = async (req, res) => {
+  console.log(req.body);
   let UpdateCard = await cardModel.updateMany(
     { _id: req.body._id },
     {
@@ -52,7 +53,19 @@ export const updateCard = async (req, res) => {
     }
   );
 
-  console.log(UpdateCard)
-
+  console.log(UpdateCard);
   res.send({ updatedCard: UpdateCard });
+};
+
+export const handleLike = async (req, res) => {
+  console.log(req.params.id);
+  let updateLike = await cardModel.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        isLiked: !isLiked,
+      },
+    }
+  );
+  res.send({ likeUpdate: updateLike });
 };

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   handleLike,
   handleView,
+  updateLikeAPI,
   viewTemplate,
 } from "../../redux/features/cardSlice";
 import { Link } from "react-router-dom";
@@ -41,7 +42,7 @@ const CardGenerator = () => {
                   <span>{item.cardTitle}</span>
                   <span className="like-view-details">
                     <svg
-                      // onClick={() => dispatch(handleLike(item.id))}
+                      onClick={() => dispatch(updateLikeAPI(item.id))}
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16">
