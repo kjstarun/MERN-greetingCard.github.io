@@ -2,8 +2,10 @@ import express, { json } from "express";
 import { PORT } from "../config.js";
 import Mongoose from "mongoose";
 import cardsRouter from "./API/cards.routes.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 const connectDB = async () => {
   await Mongoose.connect(

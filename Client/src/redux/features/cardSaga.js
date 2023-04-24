@@ -1,17 +1,19 @@
-import { takeLatest } from "redux-saga/effects";
-import {updateLikeLocal} from "./cardSlice";
+import { put, takeLatest } from "redux-saga/effects";
+import { updateLikeLocal } from "./cardSlice";
 import axios from "axios";
 
-
-const fetchAPI = async (url) => {
-  const data = await axios.patch(url);
-  return data;
+const fetchAPI = async (id) => {
+  const URL = `http://localhost:1001/${id}`;
+  console.log("enter", URL);
+  const data = await axios.put(URL);
+  console.log("data", data);
+  return data.data;
 };
 
 function* updateLike(actions) {
   console.log("actions saga", actions.payload);
   try {
-    const result = yield fetchAPI(`https://localhost:1001/${actions.payload}`);
+    const result = yield fetchAPI(actions.payload);
     yield put(updateLikeLocal({ result }));
   } catch (error) {
     console.log("Error from saga", error);

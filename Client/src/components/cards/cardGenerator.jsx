@@ -16,6 +16,8 @@ const CardGenerator = () => {
     dispatch(viewTemplate(id));
   };
 
+  console.log("cardgenerator list", cardList);
+
   return (
     <div className="cards-container">
       {cardList &&
@@ -25,7 +27,10 @@ const CardGenerator = () => {
               <div
                 className="card-parent-home"
                 key={index}
-                onClick={() => handleTemplate(item.id)}>
+                onClick={(e) => {
+                  // e.stopPropagation();
+                  handleTemplate(item.id);
+                }}>
                 <Link
                   to={"view"}
                   style={{ textDecoration: "none", color: "black" }}>
@@ -42,12 +47,15 @@ const CardGenerator = () => {
                   <span>{item.cardTitle}</span>
                   <span className="like-view-details">
                     <svg
-                      onClick={() => dispatch(updateLikeAPI(item.id))}
+                      onClick={(e) => {
+                        // e.stopPropagation();
+                        dispatch(updateLikeAPI(item.id));
+                      }}
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16">
                       <path
-                        fill="gray"
+                        fill={item.isLiked ? "red" : "gray"}
                         d="M5.301 
                       3.002c-.889-.047-1.759.247-2.404.893-1.29 1.292-1.175 3.49.26 4.926l.515.515L8.332 14l4.659-4.664.515-.515c1.435-1.437 1.55-3.634.26-4.926-1.29-1.292-3.483-1.175-4.918.262l-.516.517-.517-.517C7.098 3.438 6.19 3.049 5.3 3.002z"
                       />

@@ -74,10 +74,11 @@ const FilterData = createSlice({
 
     viewTemplate: (state, action) => {
       console.log(action.payload);
+      console.log("redux cardlist", state.cardList);
       state.templateId = action.payload;
       console.log("from redux templateid", state.templateId);
       let filterItem = state.cardList.filter((item) => {
-        console.log(item.id, state.templateId);
+        // console.log(item.id, state.templateId);
         if (item.id === state.templateId) {
           console.log(true);
           return item;
@@ -92,11 +93,13 @@ const FilterData = createSlice({
     },
 
     updateLikeLocal: (state, action) => {
-      state.cardList = state.cardList.map((item) => {
-        if (item.id === action.payload) {
-          item.isLiked = !isLiked;
-        }
-      });
+      let actionId = action.payload.result.likeUpdate._id;
+      let index = state.cardList.findIndex((item) => item.id === actionId);
+      state.cardList[index].isLiked = state.cardList[index].isLiked
+        ? false
+        : true;
+
+      console.log("jbof", state.cardList);
     },
   },
 });

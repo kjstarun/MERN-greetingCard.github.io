@@ -11,6 +11,6 @@ const cardsRouter = Router();
 cardsRouter.post("/", createCard);
 cardsRouter.get("/", getAllCards);
 cardsRouter.put("/", updateCard);
-cardsRouter.patch("/:id", handleLike);
+cardsRouter.put("/:id", handleLike);
 
 export default cardsRouter;

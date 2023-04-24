@@ -19,7 +19,7 @@ const Template = () => {
   }, []);
   console.log("template item", card);
 
-  console.log("cardere",cardref)
+  // console.log("cardere",cardref)
 
   const saveImage = async () => {
     // event.preventDefault();

@@ -4,6 +4,7 @@ const projectionData = { isActive: 0, createdAt: 0, updatedAt: 0, __v: 0 };
 
 export const getAllCards = async (req, res) => {
   try {
+    console.log("getall");
     let result = await cardModel.find({}, projectionData);
     res.send(result);
   } catch (error) {
@@ -58,14 +59,18 @@ export const updateCard = async (req, res) => {
 };
 
 export const handleLike = async (req, res) => {
-  console.log(req.params.id);
-  let updateLike = await cardModel.updateOne(
-    { _id: req.params.id },
-    {
-      $set: {
-        isLiked: !isLiked,
-      },
-    }
-  );
-  res.send({ likeUpdate: updateLike });
+  console.log("handlelike", req.params.id);
+  try {
+    let updateObj = await cardModel.findById(req.params.id);
+    updateObj.isLiked = updateObj.isLiked ? false : true;
+
+    let result = await cardModel.findByIdAndUpdate(req.params.id, updateObj, {
+      new: true,
+    });
+
+    res.send({ likeUpdate: result });
+  } catch (error) {
+    console.log("error", error);
+    res.send({ message: error });
+  }
 };
