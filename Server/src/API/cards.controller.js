@@ -6,56 +6,52 @@ export const getAllCards = async (req, res) => {
   try {
     console.log("getall");
     let result = await cardModel.find({}, projectionData);
-    res.send(result);
+    res.send({result});
   } catch (error) {
     res.send({ error });
   }
 };
 
 export const createCard = async (req, res) => {
-  const {
-    cardTitle,
-    cardTag,
-    cardImageSource,
-    isLiked,
-    isViewed,
-    cardColor,
-    cardPopularity,
-    cardDescription,
-    cardHTML,
-    isActive,
-  } = req.body;
-
-  const card = new cardModel({
-    cardTitle,
-    cardTag,
-    cardImageSource,
-    isLiked,
-    isViewed,
-    cardColor,
-    cardPopularity,
-    cardDescription,
-    cardHTML,
-    isActive,
-  });
-
-  const saveProduct = await card.save();
-  res.send({ createdProduct: saveProduct });
+  try {
+    const card = new cardModel(req.body);
+    
+    const saveProduct = await card.save();
+    res.send({ createdProduct: saveProduct });
+  } catch (error) {
+    console.log("erroe", error);
+    res.send({ message: error });
+  }
 };
 
 export const updateCard = async (req, res) => {
-  console.log(req.body);
-  let UpdateCard = await cardModel.updateMany(
-    { _id: req.body._id },
-    {
-      $set: {
-        cardHTML: req.body.cardHTML,
-      },
+  try {
+    const { like, id } = req.body;
+    console.log(req.body);
+    // let UpdateCard = await cardModel.updateMany({ _id: id });
+    let updateLike = await cardModel.findById(id);
+    // let count = updateLike.likeCount;
+    // updateLike.likeCount = (updateLike.likeCount || 0) + 1;
+    console.log("count", updateLike.likeCount);
+    if (like) {
+      // console.log("true enter like", updateLike["likeCount"]);
+      updateLike.likeCount = (updateLike.likeCount || 0) + 1;
+    } else if (updateLike.likeCount >= 1) {
+      updateLike.likeCount = updateLike.likeCount - 1;
+    } else {
+      return res.send({ message: "Minimum like count" });
     }
-  );
 
-  console.log(UpdateCard);
-  res.send({ updatedCard: UpdateCard });
+    let result = await cardModel.findByIdAndUpdate(id, updateLike);
+
+    res.send({ message: result });
+  } catch (error) {
+    console.log(error);
+    res.send({ message: error });
+  }
+
+  // console.log(UpdateCard);
+  // res.send({ updatedCard: UpdateCard });
 };
 
 export const handleLike = async (req, res) => {

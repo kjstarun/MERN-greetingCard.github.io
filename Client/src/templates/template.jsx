@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-import html2canvas from "html2canvas";
-// import { exportComponentAsPNG } from "react-component-export-image";
+import { exportComponentAsPNG } from "react-component-export-image";
+// import domtoimage from "dom-to-image";
+// import bday from "../assets/bday.avif";
+// import html2canvas from "html2canvas";
 
 const Template = () => {
   const { edit } = useParams();
@@ -19,17 +21,35 @@ const Template = () => {
   }, []);
   console.log("template item", card);
 
+  // const saveImage = async () => {
+  //   let filterImg = cardRef.current;
+  //   let convertImg = await domtoimage
+  //     .toBlob(document.getElementById("save-image"))
+  //     .then((url) => {
+  //       window.saveAs(url, "custom.jpg");
+  //       // return url;
+  //     });
+  //   // let convertImg = await domtoimage
+  //   //   .toJpeg(document.getElementById("save-image"), { quality: 0.95 })
+  //   //   .then(function (dataUrl) {
+  //   //     var link = document.createElement("a");
+  //   //     link.download = "my-image-name.jpeg";
+  //   //     link.href = dataUrl;
+  //   //     link.click();
+  //   //   });
+  // };
+
   // console.log("cardere",cardref)
 
-  const saveImage = async () => {
-    // event.preventDefault();
-   await html2canvas(cardRef, {
-      onrendered: function (canvas) {
-        let myImage = canvas.toDataURL("image/png");
-        downloadURI("data:" + myImage, "CustomGreeting.png");
-      },
-    });
-  };
+  // const saveImage = async () => {
+  //   // event.preventDefault();
+  //   await html2canvas(cardRef, {
+  //     onrendered: function (canvas) {
+  //       let myImage = canvas.toDataURL("image/png");
+  //       downloadURI("data:" + myImage, "CustomGreeting.png");
+  //     },
+  //   });
+  // };
 
   const parseHTML = (htmlString) => {
     let localString = htmlString;
@@ -67,9 +87,10 @@ const Template = () => {
         dangerouslySetInnerHTML={{ __html: parseHTML(card.cardHTML) }}
         style={{ width: "100%" }}
         ref={cardRef}
+        id="save-image"
       />
       {edit && (
-        <div style={{ width: "20%" }}>
+        <div style={{ width: "20%" }} className="edit-form">
           {inputFields &&
             inputFields.map((item) => {
               return (
@@ -81,7 +102,9 @@ const Template = () => {
                 />
               );
             })}
-          <button onClick={saveImage}>Save card</button>
+          <button onClick={() => exportComponentAsPNG(cardRef)}>
+            Save card
+          </button>
         </div>
       )}
     </div>

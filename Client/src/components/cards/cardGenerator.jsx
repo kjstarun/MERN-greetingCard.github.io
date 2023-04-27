@@ -1,16 +1,22 @@
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  handleLike,
-  handleView,
+  fetchCardData,
+  // handleLike,
+  // handleView,
   updateLikeAPI,
   viewTemplate,
 } from "../../redux/features/cardSlice";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const CardGenerator = () => {
   const dispatch = useDispatch();
   const { cardList } = useSelector((state) => state.cardSlice);
+
+  useEffect(() => {
+    dispatch(fetchCardData());
+  }, []);
 
   const handleTemplate = (id) => {
     dispatch(viewTemplate(id));
@@ -29,7 +35,7 @@ const CardGenerator = () => {
                 key={index}
                 onClick={(e) => {
                   // e.stopPropagation();
-                  handleTemplate(item.id);
+                  handleTemplate(item._id);
                 }}>
                 <Link
                   to={"view"}
@@ -49,7 +55,7 @@ const CardGenerator = () => {
                     <svg
                       onClick={(e) => {
                         // e.stopPropagation();
-                        dispatch(updateLikeAPI(item.id));
+                        dispatch(updateLikeAPI(item._id));
                       }}
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"

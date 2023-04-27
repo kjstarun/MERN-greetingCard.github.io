@@ -3,7 +3,6 @@ import Mongoose from "mongoose";
 const cardSchema = new Mongoose.Schema(
   {
     cardTitle: { type: String, required: true },
-    cardDescription: { type: String, required: true },
     cardTag: { type: String, required: true },
     cardImageSource: { type: String, required: true },
     cardColor: { type: String, required: true },
@@ -19,8 +18,9 @@ const cardSchema = new Mongoose.Schema(
     isLiked: { type: Boolean, required: true },
     isViewed: { type: Boolean, required: true },
     isActive: { type: Boolean, default: true },
+    likeCount: { type: Number, default: false },
   },
-  { timestamps: true }
+  { timestamps: true, strict: false }
 );
 
 const cardModel = Mongoose.model("Card", cardSchema);

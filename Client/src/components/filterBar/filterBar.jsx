@@ -15,7 +15,7 @@ const FilterBar = () => {
           setFilterOptionsFlag={setFilterOptionsFlag}
         />
       </div>
-      <FilterForm filterOptionsFlag={filterOptionsFlag} />
+      <FilterForm filterOptionsFlag={filterOptionsFlag} className="filter-form" />
     </>
   );
 };

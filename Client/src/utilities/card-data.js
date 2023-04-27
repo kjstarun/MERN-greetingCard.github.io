@@ -4,7 +4,7 @@ export const CARDS_DATA = [
     cardTitle: "Tarun",
     cardTag: "birthday",
     cardImageSource:
-      "https://img.freepik.com/free-vector/realistic-happy-birthday-black-golden_1361-3241.jpg",
+      "https://greetings-pitstop.s3.ap-south-1.amazonaws.com/realistic-happy-birthday-black-golden_1361-3241.jpg",
     isLiked: false,
     isViewed: false,
     cardColor: "black",
@@ -18,7 +18,7 @@ export const CARDS_DATA = [
           </div>
           <div class="image-container-bd">
             <img
-              src="https://img.freepik.com/free-vector/realistic-happy-birthday-black-golden_1361-3241.jpg"
+              src="https://greetings-pitstop.s3.ap-south-1.amazonaws.com/realistic-happy-birthday-black-golden_1361-3241.jpg"
               alt=""
             />
           </div>
@@ -52,7 +52,8 @@ export const CARDS_DATA = [
     id: "643ec215905469606b0505eb",
     cardTitle: "Hareesh",
     cardTag: "anniversary",
-    cardImageSource: "https://mcdn.wallpapersafari.com/medium/14/80/NoYclA.jpg",
+    cardImageSource:
+      "https://greetings-pitstop.s3.ap-south-1.amazonaws.com/NoYclA.jpg",
     isLiked: false,
     isViewed: false,
     isActive: true,
@@ -61,7 +62,7 @@ export const CARDS_DATA = [
     cardHTML: ` <div class="body-an">
       <div class="card-parent-an">
         <div class="image-container-an">
-          <img src="https://wallpaperset.com/w/full/2/3/8/151810.jpg" alt="" />
+          <img src="https://greetings-pitstop.s3.ap-south-1.amazonaws.com/NoYclA.jpg" alt="" />
         </div>
         <div class="anniversary-details-parent">
           <div class="anniversary-details-child">
@@ -110,7 +111,7 @@ export const CARDS_DATA = [
     cardTitle: "Ashwary",
     cardTag: "wedding",
     cardImageSource:
-      "https://images.squarespace-cdn.com/content/v1/5e342ec955a1d92e3ad03fcc/1588706574014-2EM8E28XIXIIT66ZOPA5/2019.11.29+-+Wolensky+Amatrudo+Wedding+High+Resolution-0394.jpg",
+      "https://greetings-pitstop.s3.ap-south-1.amazonaws.com/2019.11.29%2B-%2BWolensky%2BAmatrudo%2BWedding%2BHigh%2BResolution-0394.jpg",
     isLiked: false,
     isViewed: false,
     isActive: true,
@@ -120,7 +121,7 @@ export const CARDS_DATA = [
       <div class="card-parent">
         <div class="image-container-wd">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/5e342ec955a1d92e3ad03fcc/1588706574014-2EM8E28XIXIIT66ZOPA5/2019.11.29+-+Wolensky+Amatrudo+Wedding+High+Resolution-0394.jpg"
+            src="https://greetings-pitstop.s3.ap-south-1.amazonaws.com/2019.11.29%2B-%2BWolensky%2BAmatrudo%2BWedding%2BHigh%2BResolution-0394.jpg"
             alt=""
           />
         </div>

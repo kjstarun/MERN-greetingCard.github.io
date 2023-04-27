@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CARDS_DATA } from "../../utilities/card-data";
 
 const initialState = {
-  APICardData: CARDS_DATA,
-  cardList: CARDS_DATA,
+  APICardData: null,
+  cardList: null,
   filterColor: null,
   filterTimestamp: null,
   filterTag: null,
@@ -16,6 +16,14 @@ const FilterData = createSlice({
   name: "filterData",
   initialState,
   reducers: {
+    fetchCardData: (state, action) => {
+      console.log("on load watcher function");
+    },
+    setOnLoadAPIDATA: (state, action) => {
+      console.log("api data", action.payload.result);
+      state.APICardData = action.payload.result;
+      state.cardList = action.payload.result;
+    },
     setFilterPopular: (state, action) => {
       state.filterPopular = action.payload;
       if (action.payload === "popular") {
@@ -52,7 +60,7 @@ const FilterData = createSlice({
     handleLike: (state, action) => {
       console.log(action.payload);
       state.cardList = state.APICardData.map((item) => {
-        if (item.id === action.payload) {
+        if (item._id === action.payload) {
           item.likeCount = item.likeCount + 1;
           return item;
         }
@@ -63,7 +71,7 @@ const FilterData = createSlice({
     handleView: (state, action) => {
       console.log(action.payload);
       state.cardList = state.APICardData.map((item) => {
-        if (item.id === action.payload) {
+        if (item._id === action.payload) {
           item.viewCount = item.viewCount + 1;
           return item;
         }
@@ -79,7 +87,7 @@ const FilterData = createSlice({
       console.log("from redux templateid", state.templateId);
       let filterItem = state.cardList.filter((item) => {
         // console.log(item.id, state.templateId);
-        if (item.id === state.templateId) {
+        if (item._id === state.templateId) {
           console.log(true);
           return item;
         }
@@ -105,6 +113,8 @@ const FilterData = createSlice({
 });
 
 export const {
+  fetchCardData,
+  setOnLoadAPIDATA,
   setFilterPopular,
   setFilterColor,
   setFilterTimeFrame,
