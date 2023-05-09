@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-import { exportComponentAsPNG } from "react-component-export-image";
+// import { exportComponentAsPNG } from "react-component-export-image";
+import { saveAs } from "file-saver";
 // import domtoimage from "dom-to-image";
 // import bday from "../assets/bday.avif";
 // import html2canvas from "html2canvas";
@@ -50,6 +51,10 @@ const Template = () => {
   //     },
   //   });
   // };
+
+  const saveImage = (ref) => {
+    saveAs(ref, "image.png");
+  };
 
   const parseHTML = (htmlString) => {
     let localString = htmlString;
@@ -102,9 +107,8 @@ const Template = () => {
                 />
               );
             })}
-          <button onClick={() => exportComponentAsPNG(cardRef)}>
-            Save card
-          </button>
+          {/* <button onClick={() => saveImage(cardRef)}>Save card</button> */}
+          {/* <a href={cardRef} download={"custom.pdf"}>Save but</a> */}
         </div>
       )}
     </div>

@@ -101,11 +101,12 @@ const FilterData = createSlice({
     },
 
     updateLikeLocal: (state, action) => {
-      let actionId = action.payload.result.likeUpdate._id;
-      let index = state.cardList.findIndex((item) => item.id === actionId);
-      state.cardList[index].isLiked = state.cardList[index].isLiked
-        ? false
-        : true;
+      console.log("action uploadlikelocal", action.payload.result);
+      let payload = action.payload.result.likeUpdate;
+      let index = state.cardList.findIndex((item) => item._id === payload._id);
+      state.cardList[index].isLiked = payload.isLiked;
+      state.cardList[index].likeCount = payload.likeCount;
+      // state.cardList[index].likeCount = s
 
       console.log("jbof", state.cardList);
     },

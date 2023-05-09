@@ -2,12 +2,15 @@ import { put, takeLatest } from "redux-saga/effects";
 import { setOnLoadAPIDATA, updateLikeLocal } from "./cardSlice";
 import axios from "axios";
 
-const fetchAPI = async (id) => {
-  const URL = `http://localhost:1001/${id}`;
+const updateLikeAPI = async (payload) => {
+  const URL = `http://localhost:1001/${payload._id}`;
   console.log("enter", URL);
-  const data = await axios.post(URL);
+  const data = await axios.put(URL, {
+    like: payload.isLiked,
+  });
   console.log("data", data);
   return data.data;
+  // console.log("like count api parametr", payload);
 };
 
 const loadData = async () => {
@@ -20,7 +23,8 @@ const loadData = async () => {
 function* updateLike(actions) {
   console.log("actions saga", actions.payload);
   try {
-    const result = yield fetchAPI(actions.payload);
+    const result = yield updateLikeAPI(actions.payload);
+    console.log("res", result);
     yield put(updateLikeLocal({ result }));
   } catch (error) {
     console.log("Error from saga", error);
