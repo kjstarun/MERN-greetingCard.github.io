@@ -100,6 +100,10 @@ const FilterData = createSlice({
       console.log("watcher function", action);
     },
 
+    updateViewAPI: (state, action) => {
+      console.log("watcher function", action);
+    },
+
     updateLikeLocal: (state, action) => {
       console.log("action uploadlikelocal", action.payload.result);
       let payload = action.payload.result.likeUpdate;
@@ -108,6 +112,14 @@ const FilterData = createSlice({
       state.cardList[index].likeCount = payload.likeCount;
       // state.cardList[index].likeCount = s
 
+      console.log("jbof", state.cardList);
+    },
+
+    updateViewLocal: (state, action) => {
+      console.log("action uploadlikelocal", action.payload.result);
+      let payload = action.payload.result.viewUpdate;
+      let index = state.cardList.findIndex((item) => item._id === payload._id);
+      state.cardList[index].viewCount = payload.viewCount;
       console.log("jbof", state.cardList);
     },
   },
@@ -125,6 +137,8 @@ export const {
   viewTemplate,
   updateLikeLocal,
   updateLikeAPI,
+  updateViewAPI,
+  updateViewLocal,
 } = FilterData.actions;
 
 export default FilterData.reducer;

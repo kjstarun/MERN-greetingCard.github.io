@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-// import { exportComponentAsPNG } from "react-component-export-image";
-import { saveAs } from "file-saver";
-// import domtoimage from "dom-to-image";
+import { exportComponentAsPNG } from "react-component-export-image";
+// import { saveAs } from "file-saver";
+import domtoimage from "dom-to-image";
 // import bday from "../assets/bday.avif";
 // import html2canvas from "html2canvas";
 
@@ -22,23 +22,23 @@ const Template = () => {
   }, []);
   console.log("template item", card);
 
-  // const saveImage = async () => {
-  //   let filterImg = cardRef.current;
-  //   let convertImg = await domtoimage
-  //     .toBlob(document.getElementById("save-image"))
-  //     .then((url) => {
-  //       window.saveAs(url, "custom.jpg");
-  //       // return url;
-  //     });
-  //   // let convertImg = await domtoimage
-  //   //   .toJpeg(document.getElementById("save-image"), { quality: 0.95 })
-  //   //   .then(function (dataUrl) {
-  //   //     var link = document.createElement("a");
-  //   //     link.download = "my-image-name.jpeg";
-  //   //     link.href = dataUrl;
-  //   //     link.click();
-  //   //   });
-  // };
+  const saveImage = async () => {
+    let filterImg = cardRef.current;
+    let convertImg = await domtoimage
+      .toBlob(document.getElementById("save-image"))
+      .then((url) => {
+        window.saveAs(url, "custom.jpg");
+        // return url;
+      });
+    // let convertImg = await domtoimage
+    //   .toJpeg(document.getElementById("save-image"), { quality: 0.95 })
+    //   .then(function (dataUrl) {
+    //     var link = document.createElement("a");
+    //     link.download = "my-image-name.jpeg";
+    //     link.href = dataUrl;
+    //     link.click();
+    //   });
+  };
 
   // console.log("cardere",cardref)
 
@@ -52,9 +52,9 @@ const Template = () => {
   //   });
   // };
 
-  const saveImage = (ref) => {
-    saveAs(ref, "image.png");
-  };
+  // const saveImage = (ref) => {
+  //   saveAs(ref, "image.png");
+  // };
 
   const parseHTML = (htmlString) => {
     let localString = htmlString;
@@ -107,7 +107,9 @@ const Template = () => {
                 />
               );
             })}
-          {/* <button onClick={() => saveImage(cardRef)}>Save card</button> */}
+          <button onClick={() => exportComponentAsPNG(cardRef)}>
+            Save card
+          </button>
           {/* <a href={cardRef} download={"custom.pdf"}>Save but</a> */}
         </div>
       )}

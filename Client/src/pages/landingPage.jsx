@@ -1,15 +1,11 @@
-import CardGenerator from "../components/cards/cardGenerator";
-import FilterBar from "../components/filterBar/filterBar";
-import Footer from "../components/footer/footer";
 import Header from "../components/header/header";
+import MainSection from "../components/landingSection/mainSection";
 
 const LandingPage = () => {
   return (
     <>
       <Header />
-      <FilterBar />
-      <CardGenerator />
-      <Footer />
+      <MainSection />   
     </>
   );
 };
