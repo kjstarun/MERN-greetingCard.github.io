@@ -77,3 +77,22 @@ export const handleLike = async (req, res) => {
     res.send({ message: error });
   }
 };
+
+export const handleView = async (req, res) => {
+  console.log("handleView", req.params.id, req.body);
+  try {
+    const id = req.params.id;
+    let updateObj = await cardModel.findById(id);
+    updateObj.viewCount = updateObj.viewCount + 1;
+
+    let result = await cardModel.findByIdAndUpdate(req.params.id, updateObj, {
+      new: true,
+    });
+
+    console.log("res", result);
+    res.send({ viewUpdate: result });
+  } catch (error) {
+    console.log("error", error);
+    res.send({ message: error });
+  }
+};

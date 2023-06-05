@@ -19,6 +19,7 @@ const cardSchema = new Mongoose.Schema(
     isViewed: { type: Boolean, required: true },
     isActive: { type: Boolean, default: true },
     likeCount: { type: Number, default: false },
+    viewCount: { type: Number, default: false },
   },
   { timestamps: true, strict: false }
 );

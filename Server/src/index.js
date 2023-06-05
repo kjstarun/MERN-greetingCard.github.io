@@ -1,8 +1,9 @@
 import express, { json } from "express";
 import { PORT } from "../config.js";
 import Mongoose from "mongoose";
-import cardsRouter from "./API/cards.routes.js";
+import cardsRouter from "./API/cards/cards.routes.js";
 import cors from "cors";
+import authRouter from "./API/users/users.routes.js";
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ connectDB();
 
 app.use(json());
 app.use("/", cardsRouter);
+app.use("/user", authRouter);
 
 app.listen(PORT, () => {
   console.log(`Backend started successfully on port number ${PORT}`);

@@ -3,6 +3,7 @@ import {
   createCard,
   getAllCards,
   handleLike,
+  handleView,
   // updateCard,
 } from "./cards.controller.js";
 
@@ -12,5 +13,6 @@ cardsRouter.post("/", createCard);
 cardsRouter.get("/", getAllCards);
 // cardsRouter.put("/", updateCard);
 cardsRouter.put("/:id", handleLike);
+cardsRouter.put("/view/:id", handleView);
 
 export default cardsRouter;
