@@ -6,7 +6,7 @@ import Header from "../components/header/header";
 const HomePage = () => {
   return (
     <>
-      <Header />
+      <Header share={true} welcome={true} />
       <FilterBar />
       <CardGenerator />
       <Footer />

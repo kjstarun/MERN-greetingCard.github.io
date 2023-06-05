@@ -4,8 +4,8 @@ import MainSection from "../components/landingSection/mainSection";
 const LandingPage = () => {
   return (
     <>
-      <Header />
-      <MainSection />   
+      <Header share={false} welcome={false} />
+      <MainSection />
     </>
   );
 };

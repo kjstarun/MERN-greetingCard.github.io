@@ -42,8 +42,8 @@ const Signup = () => {
     console.log("Message", response);
 
     if (response.data.message) {
-      toast.success("User registered successfully, please login to continue", {
-        position: "top-right",
+      toast.success(response.data.message, {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

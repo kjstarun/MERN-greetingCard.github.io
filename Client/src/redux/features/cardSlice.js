@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CARDS_DATA } from "../../utilities/card-data";
 
 const initialState = {
   APICardData: null,
@@ -10,6 +9,7 @@ const initialState = {
   filterPopular: null,
   templateId: null,
   templateItem: null,
+  currentUser: null,
 };
 
 const FilterData = createSlice({
@@ -122,6 +122,11 @@ const FilterData = createSlice({
       state.cardList[index].viewCount = payload.viewCount;
       console.log("jbof", state.cardList);
     },
+
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+      console.log("state user", state.currentUser);
+    },
   },
 });
 
@@ -139,6 +144,7 @@ export const {
   updateLikeAPI,
   updateViewAPI,
   updateViewLocal,
+  setCurrentUser,
 } = FilterData.actions;
 
 export default FilterData.reducer;

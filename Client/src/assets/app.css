@@ -13,6 +13,19 @@
   border-bottom: 1px solid gray;
 }
 
+.right-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.welcome-user {
+  font-size: 15px;
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
 .logo {
   font-size: 30px;
   letter-spacing: 0.2rem;
@@ -303,7 +316,7 @@ input[type="text"]:focus {
   width: 300px;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   gap: 15px;

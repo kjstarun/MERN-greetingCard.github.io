@@ -32,18 +32,17 @@ const CardGenerator = () => {
         cardList.map((item, index) => {
           return (
             <>
-              <div
-                className="card-parent-home"
-                key={index}
-                onClick={(e) => {
-                  // e.stopPropagation();
-                  handleTemplate(item._id);
-                  dispatch(updateViewAPI(item));
-                }}>
+              <div className="card-parent-home" key={index}>
                 <Link
                   to={"/view"}
                   style={{ textDecoration: "none", color: "black" }}>
-                  <Card className="image-container">
+                  <Card
+                    className="image-container"
+                    onClick={(e) => {
+                      // e.stopPropagation();
+                      handleTemplate(item._id);
+                      dispatch(updateViewAPI(item));
+                    }}>
                     <Card.Img
                       variant="top"
                       src={item.cardImageSource}

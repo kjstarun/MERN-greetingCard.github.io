@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../redux/features/cardSlice";
 
 const Login = () => {
   const initialData = {
@@ -15,6 +17,7 @@ const Login = () => {
   const [formDetails, setFormDetails] = useState(initialData);
   console.log("login", formDetails);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     if (formDetails.email === "") {
@@ -40,11 +43,24 @@ const Login = () => {
       email: formDetails.email,
       password: formDetails.password,
     });
-
-    if (response.data.message) {
-      toast.success("Welcome", {
-        position: "top-right",
-        autoClose: 5000,
+    if (response.data.message !== true) {
+      toast.error("Invalid credentials", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (response.data.message) {
+      const user = formDetails.email.slice(0, formDetails.email.indexOf("@"));
+      console.log("user", user);
+      dispatch(setCurrentUser(user));
+      toast.success(`Welcome ${user}`, {
+        position: "top-center",
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
